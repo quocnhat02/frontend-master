@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First Project</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .app {
+        background: -webkit-linear-gradient(
+          215deg,
+          rgba(124, 228, 150, 1) 20%,
+          rgba(255, 160, 245, 1) 78%
+        );
+        background: linear-gradient(
+          215deg,
+          rgba(124, 228, 150, 1) 20%,
+          rgba(255, 160, 245, 1) 78%
+        );
+      }
+      nav {
+        background: -webkit-linear-gradient(
+          90deg,
+          rgba(255, 255, 0, 1) 0%,
+          rgba(9, 243, 217, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 0, 1) 0%,
+          rgba(9, 243, 217, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+      .navbar__list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+      }
+      .navbar__list-item {
+        margin-right: 20px;
+      }
+      .navbar__list-item a {
+        text-decoration: none;
+        color: brown;
+      }
+      header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 1.4rem;
+        height: calc(100vh - 70px);
+      }
+      .header__content {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+      }
+      .header__content h1 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: rgb(204, 56, 56);
+      }
+      .header__content p {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      .header__content button {
+        margin-top: 20px;
+        font-size: 1.6rem;
+        padding: 12px;
+        border-radius: 10px;
+        color: aliceblue;
+        background: rgba(40, 223, 85, 1);
+        border: 1px solid transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="app">
+      <nav>
+        <img src="/assets/dashboard/discord.png" alt="" width="100" />
+        <ul class="navbar__list">
+          <li class="navbar__list-item"><a href="#">About</a></li>
+          <li class="navbar__list-item"><a href="#">Projects</a></li>
+          <li class="navbar__list-item"><a href="#">Courses</a></li>
+        </ul>
+      </nav>
+      <header>
+        <div class="header__content">
+          <h1>Best place to learn Frontend</h1>
+          <p>Go from absolute beginner to pro with a simplified process</p>
+          <button>Start now</button>
+        </div>
+        <figure class="laptop">
+          <img src="/assets/laptop.png" alt="" />
+        </figure>
+      </header>
+    </section>
+  </body>
+</html>
