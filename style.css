@@ -4,4 +4,79 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+nav {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  background-color: #47f3f9;
+}
+
+a {
+  color: black;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+header {
+  background-color: #b187ef;
+  height: calc(100vh - 70px);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 72px;
+}
+
+.subheader {
+  font-size: 36px;
+  margin: 16px 0 24px 0;
+}
+
+button {
+  background-color: #05c7cf;
+  color: white;
+  border: none;
+  padding: 8px 24px;
+  font-size: 24px;
+}
+
+.logo {
+  width: 300px;
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  list-style-type: none;
+  padding-left: 16px;
+}
+
+.row {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ABOUT */
+
+#about {
+  padding: 40px 0;
+}
+
+h2 {
+  font-size: 60px;
+  text-align: center;
+  margin-bottom: 24px;
 }
