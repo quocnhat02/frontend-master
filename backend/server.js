@@ -3,11 +3,11 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const model = require('./user.model');
-const { default: mongoose } = require('mongoose');
 
 app.use(cors());
 app.use(express.json());
 
+mongoose.set('strictQuery', false);
 mongoose.connect('mongodb://localhost:27017/usercollection');
 
 app.post('/api/register', async (req, res) => {
@@ -22,6 +22,10 @@ app.post('/api/register', async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+app.post('/api/login', (req, res) => {
+  console.log(req.body.email);
 });
 
 app.listen('1337', () => {
