@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import MovieCard from './MovieCard';
 
 function App() {
   const API_URL =
@@ -10,8 +11,10 @@ function App() {
   useEffect(() => {
     fetch(API_URL)
       .then((res) => res.json())
-      .then((data) => setMovies(data));
+      .then((data) => setMovies(data.results));
   }, []);
+
+  console.log(movies);
 
   return (
     <div className="App">
@@ -28,7 +31,11 @@ function App() {
         </div>
       </div>
 
-      <div className="movies"></div>
+      <div className="movies">
+        {movies.map((movie) => (
+          <MovieCard />
+        ))}
+      </div>
     </div>
   );
 }
