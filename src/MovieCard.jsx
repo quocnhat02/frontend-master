@@ -7,7 +7,14 @@ const MovieCard = (props) => {
   return (
     <div className="card">
       <div className="poster">
-        <img src={API_IMG + props.poster_path} alt={props.title} />
+        <img
+          src={
+            props.poster_path
+              ? API_IMG + props.poster_path
+              : 'https://plus.unsplash.com/premium_photo-1670917243492-712ce3634244?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfENEd3V3WEpBYkV3fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
+          }
+          alt={props.title}
+        />
       </div>
 
       <div className="info">

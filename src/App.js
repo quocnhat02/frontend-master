@@ -35,7 +35,7 @@ function App() {
           <h1>Movies</h1>
         </div>
 
-        <div>
+        <div className="search_box">
           <form onSubmit={handleSearch}>
             <input onChange={(e) => setTerm(e.target.value)} />
             <button>Search</button>
