@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import TodoForm from './TodoForm';
+import TodoItem from './TodoItem';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -20,6 +21,8 @@ function App() {
 
     setTodos((allTodo) => [newTodo, ...allTodo]);
   };
+
+  const element = todos.map((el) => <TodoItem />);
 
   console.log(todos);
 
