@@ -33,7 +33,7 @@ function App() {
 
       <div className="movies">
         {movies.map((movie) => (
-          <MovieCard />
+          <MovieCard {...movie} />
         ))}
       </div>
     </div>
