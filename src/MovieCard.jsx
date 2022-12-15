@@ -14,6 +14,11 @@ const MovieCard = (props) => {
         <p className="title">{props.title}</p>
         <p className="vote">{props.vote_average}</p>
       </div>
+
+      <div className="overview">
+        <h2 className="title_overview">Overview</h2>
+        <h3>{props.overview}</h3>
+      </div>
     </div>
   );
 };

@@ -2,9 +2,30 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.App {
+  padding: 1.5rem;
+  background-color: rgb(50, 50, 101);
 }
 
 .movies {
   display: flex;
   flex-wrap: wrap;
+}
+
+.search_nav {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.title {
+  padding-right: 3rem;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
 }
