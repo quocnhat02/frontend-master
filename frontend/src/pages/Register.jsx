@@ -10,7 +10,9 @@ const Register = () => {
     e.preventDefault();
 
     await fetch('http://localhost:1337/api/register', {
-      body: JSON.stringify({
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: await JSON.stringify({
         name,
         email,
         password,
