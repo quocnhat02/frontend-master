@@ -46,6 +46,14 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+app.post('/api/dashboard', async (req, res) => {
+  const token = req.headers['x-access-token'];
+  const goal = req.body.tempGoal;
+
+  const isTokenValid = await jwt.verify(token, 'secret123');
+  console.log(isTokenValid);
+});
+
 app.listen('1337', () => {
   console.log(`Server started on port 1337`);
 });

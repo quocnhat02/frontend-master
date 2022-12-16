@@ -7,9 +7,11 @@ const Dashboard = () => {
   const addGoal = async (e) => {
     e.preventDefault();
 
+    const token = localStorage.getItem('token');
+
     await fetch('http://localhost:1337/api/dashboard', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'x-access-token': token },
       body: await JSON.stringify({
         tempGoal,
       }),
