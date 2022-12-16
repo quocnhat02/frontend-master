@@ -1,15 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    await fetch('http://localhost:1337/api/register', {
+    const req = await fetch('http://localhost:1337/api/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: await JSON.stringify({
@@ -18,6 +20,14 @@ const Register = () => {
         password,
       }),
     });
+
+    const data = await req.json();
+
+    if (data.status === 'ok') {
+      navigate('/login');
+    } else {
+      alert('Duplicate Email');
+    }
   };
 
   return (

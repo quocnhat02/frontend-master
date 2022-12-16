@@ -7,7 +7,7 @@ const model = require('./user.model');
 app.use(cors());
 app.use(express.json());
 
-mongoose.set('strictQuery', false);
+mongoose.set('strictQuery', true);
 mongoose.connect('mongodb://localhost:27017/usercollection');
 
 app.post('/api/register', async (req, res) => {
@@ -18,14 +18,23 @@ app.post('/api/register', async (req, res) => {
       password: req.body.password,
     });
 
-    res.status(200).json(user);
+    res.json({ status: 'ok' });
   } catch (error) {
-    console.log(error);
+    res.json({ status: 'Duplicate Email' });
   }
 });
 
-app.post('/api/login', (req, res) => {
-  console.log(req.body.email);
+app.post('/api/login', async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  const user = await model.findOne({ email, password });
+
+  if (user) {
+    return res.json({ status: 'Logged in' });
+  } else {
+    return res.json({ status: 'Wrong email or password' });
+  }
 });
 
 app.listen('1337', () => {
