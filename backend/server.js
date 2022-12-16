@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const model = require('./user.model');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 app.use(cors());
 app.use(express.json());
@@ -30,10 +31,16 @@ app.post('/api/login', async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  const user = await model.findOne({ email, password });
+  const user = await model.findOne({ email });
 
-  if (user) {
-    return res.json({ status: 'Logged in' });
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+
+  if (isPasswordValid) {
+    const token = await jwt.sign(
+      { email: user.email, name: user.name },
+      'secret123'
+    );
+    return res.json({ status: 'ok', token });
   } else {
     return res.json({ status: 'Wrong email or password' });
   }

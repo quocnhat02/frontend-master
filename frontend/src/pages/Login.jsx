@@ -21,6 +21,8 @@ const Login = () => {
     const data = await req.json();
 
     if (data.status === 'ok') {
+      localStorage.setItem('token', data.token);
+
       navigate('/dashboard');
     } else {
       alert('Wrong Email or Password');
