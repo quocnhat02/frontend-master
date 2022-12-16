@@ -51,7 +51,15 @@ app.post('/api/dashboard', async (req, res) => {
   const goal = req.body.tempGoal;
 
   const isTokenValid = await jwt.verify(token, 'secret123');
-  console.log(isTokenValid);
+  const email = isTokenValid.email;
+
+  if (isTokenValid) {
+    await model.updateOne({ email }, { $set: { goal } });
+
+    return res.json({ status: 'ok' });
+  } else {
+    return res.json({ status: 'Invalid Token' });
+  }
 });
 
 app.listen('1337', () => {
