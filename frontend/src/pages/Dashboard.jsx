@@ -1,8 +1,34 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { decodeToken } from 'react-jwt';
 
 const Dashboard = () => {
   const [tempGoal, setTempGoal] = useState('');
   const [goal, setGoal] = useState('');
+
+  const populateDashboard = async () => {
+    const token = localStorage.getItem('token');
+    const req = await fetch('http://localhost:1337/api/dashboard', {
+      headers: { 'x-access-token': token },
+    });
+
+    const data = await req.json();
+    if (data.status === 'ok') {
+      setGoal(data.goal);
+    } else {
+      alert('Invalid Token');
+    }
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const isTokenValid = decodeToken(token);
+    if (isTokenValid) {
+      populateDashboard();
+    } else {
+      alert('Invalid Token');
+    }
+  });
 
   const addGoal = async (e) => {
     e.preventDefault();

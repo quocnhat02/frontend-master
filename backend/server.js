@@ -62,6 +62,20 @@ app.post('/api/dashboard', async (req, res) => {
   }
 });
 
+app.get('/api/dashboard', async (req, res) => {
+  const token = req.headers['x-access-token'];
+  const isValidToken = await jwt.verify(token, 'secret123');
+
+  if (isValidToken) {
+    const email = isValidToken.email;
+    const goal = await model.findOne({ email });
+
+    return res.json({ status: 'ok', goal });
+  } else {
+    return res.json('Invalid Token');
+  }
+});
+
 app.listen('1337', () => {
   console.log(`Server started on port 1337`);
 });
